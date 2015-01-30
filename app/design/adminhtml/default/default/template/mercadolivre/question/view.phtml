@@ -1,0 +1,108 @@
+
+<?php 
+
+    $question = $this->getQuestion();
+
+    $content = $question['body'];
+
+?>
+
+
+<div class="content-header">
+    <h3 class="icon-head head-sales-order">
+    <?php echo Mage::helper('mercadolivre')->__("Question %s",$content->id); ?></h3>
+</div>
+
+
+<div class="entry-edit" id="sales_order_view">
+    <div id="sales_order_view_tabs_order_info_content">
+        <div>
+            <div id="order-messages"></div>
+            <div class="box-left">
+                <div class="entry-edit">
+                    <div class="entry-edit-head">
+                        <h4 class="icon-head head-account"> <?php echo Mage::helper('mercadolivre')->__("Question");?></h4>
+                    </div>
+                    <div class="fieldset">
+                        <table cellspacing="0" class="form-list">
+            	            <tbody>
+            		            <tr>
+            		                <td class="label"><label><?php echo Mage::helper('mercadolivre')->__("Date");?></label></td>
+            		                <td class="value"><strong><?php echo $content->date_created;?> </strong></td>
+            		            </tr>
+            		            <tr>
+            		                <td class="label"><label><?php echo Mage::helper('mercadolivre')->__("Status");?></label></td>
+            		                <td class="value"><strong><span id="order_status"><?php echo $content->status;?></span></strong></td>
+            		            </tr>
+
+                               <tr>
+                                    <td class="label"><label><?php echo Mage::helper('mercadolivre')->__("Question");?></label></td>
+                                    <td class="value"><strong><span id="order_status"><?php echo $content->text;?></span></strong></td>
+                                </tr>
+            		         </tbody>
+            	         </table>
+                    </div>
+                </div>
+            </div>
+
+             <div class="box-right">
+                <div class="entry-edit">
+                    <div class="entry-edit-head">
+                        <h4 class="icon-head head-account"><?php echo Mage::helper('mercadolivre')->__("Answer");?></h4>
+                        <div class="tools"></div>
+                    </div>
+                    <div class="fieldset">
+                        <div class="hor-scroll">
+                            <?php if($content->status == "UNANSWERED"):?>
+                                <form   id="frmAnswer" 
+                                        action="<?php echo Mage::helper("adminhtml")->getUrl("*/*/answer")?>"
+                                        method="POST" 
+                                        class="form-horizontal">
+
+                                    <input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>" />
+
+                                    <input type="hidden" name="question_id" value="<?php echo $content->id; ?>" />
+
+                                    <textarea id="answer" name="answer" class="textarea required" rows="2" cols="15"></textarea>
+
+                                    <p>
+                                    <button id="cat_save" title="Salvar Categoria" type="submit" class="scalable save" style="">
+                                        <span><span><span>Salvar Categoria</span></span></span>
+                                    </button>
+                                    </p>
+
+                                </form>
+                            <?php else:  
+                                    $content = $content->answer; 
+                            ?>
+
+                                 <table cellspacing="0" class="form-list">
+                                    <tbody>
+                                        <tr>
+                                            <td class="label"><label><?php echo Mage::helper('mercadolivre')->__("Date");?></label></td>
+                                            <td class="value"><strong><?php echo $content->date_created;?> </strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="label"><label><?php echo Mage::helper('mercadolivre')->__("Status");?></label></td>
+                                            <td class="value"><strong><span id="order_status"><?php echo $content->status;?></span></strong></td>
+                                        </tr>
+
+                                       <tr>
+                                            <td class="label"><label><?php echo Mage::helper('mercadolivre')->__("Answer");?></label></td>
+                                            <td class="value"><strong><span id="order_status"><?php echo $content->text;?></span></strong></td>
+                                        </tr>
+                                     </tbody>
+                                 </table>
+                            <?php endif;?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+</div>
+
+<script type="text/javascript">
+    //< ![CDATA[
+        var customForm = new VarienForm('frmAnswer');
+    //]]>
+</script>

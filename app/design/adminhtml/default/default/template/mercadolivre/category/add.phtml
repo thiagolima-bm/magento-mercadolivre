@@ -1,0 +1,273 @@
+<form id="frmProduct" action="<?php echo Mage::helper("adminhtml")->getUrl("*/*/save")?>"
+	method="POST" class="form-horizontal">
+	<input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>" />
+
+	<div class="control-group" id="select-cat-group">
+		<div class="msg-info-title"> 
+	        <h2><?php echo Mage::helper('mercadolivre')->__('Site Categories') ?></h2>
+	    </div>
+
+        <div class="msg-info"> 
+        <?php echo Mage::helper('mercadolivre')->__('Choose a category and wait for loading subcategories') ?></div>
+		<select id="catSelector" data-parent="0" size="10" class="select required-entry selectadds" name="category[]">
+			
+			<?php foreach($this->getCategories() as $category):?>
+			<option value=<?php echo $category->getId();?>>
+				<?php echo $category->getName();?>
+			</option>
+			<?php endforeach;?>
+		</select>
+       
+	</div>
+
+	<div class="control-group" id="select-cat-group-ml">
+		<div class="msg-info-title"> 
+	        <h2><?php echo Mage::helper('mercadolivre')->__('MercadoLivre Categories') ?></h2></div>
+
+	        <div class="msg-info"> 
+		        <?php echo Mage::helper('mercadolivre')->__('Choose a category and wait for loading subcategories') ?>
+		    </div>
+			<select id="catSelectorMl" data-parent="0" size="10" class="select required-entry selectaddsML" name="category_ml[]">
+				
+				<?php foreach($this->getMLSiteCategories()['body'] as $category):?>
+				<option value=<?php echo $category->id;?>>
+					<?php echo $category->name;?>
+				</option>
+				<?php endforeach;?>
+			</select>
+	       
+	</div>
+	<p>
+	<button id="cat_save" title="Salvar Categoria" type="submit" class="scalable save" style="">
+		<span><span><span>Salvar Categoria</span></span></span>
+	</button>
+	</p>
+</form>
+<script type="text/javascript">
+<!--
+
+$('catSelector').observe('change', function(event){
+	$(this).fire('populate:combo');
+});
+
+$('catSelectorMl').observe('change', function(event){
+	$(this).fire('populate:combo_ml');
+});
+
+
+
+
+function callPopulate(event){
+
+	event.element().fire('populate:combo');
+} 
+
+function callPopulateML(event){
+
+	event.element().fire('populate:combo_ml');
+} 
+
+document.observe("populate:EditCombo", function(event) {
+
+	var element = loadSelects()[_populateEditCombo];
+	
+	var option = element.select('option[value='+_categories[_populateEditCombo]+']').first();
+	option.selected = true;
+	element.fire('populate:combo');
+
+	_populateEditCombo++;
+
+});
+
+document.observe("populate:EditComboML", function(event) {
+
+	var element = loadSelects()[_populateEditCombo];
+	
+	var option = element.select('option[value='+_categories[_populateEditCombo]+']').first();
+	option.selected = true;
+	element.fire('populate:combo_ml');
+
+	_populateEditCombo++;
+
+});
+
+document.observe("populate:combo", function(event) {
+
+	var hasNext = true;
+
+	var element = event.element();
+
+	var selected = $(element);
+ 
+ 	var catId = $(element)[$(element).selectedIndex].value;
+
+ 	var urlGetCategory = "<?php echo Mage::getUrl('*/*/getChildCategories');?>";
+
+ 	new Ajax.Request(urlGetCategory, {
+                  method:'post',
+                  parameters: {catId: catId},
+
+                  onSuccess: function(transport) {
+
+                  	var parent = parseInt(selected.readAttribute('data-parent'));
+
+                  	var papa = parent+1;
+
+                  	removeChildren(papa);
+
+                  	var select = new Element('select',{
+                  		'data-parent':papa,
+                  		//'size':'10',
+                  		'name':'category[]',
+                  		'class':'select required-entry selectadds',
+                  	});
+
+                  	select.observe('change', callPopulate);
+          
+                    var data = transport.responseText.evalJSON();
+                    
+                    if(data.error)
+                    
+                        console.log('<font color="red">'+data.msg+'</font>');
+                    
+                    else if(data.length == 0){
+
+                    	  hasNext = false;
+                    
+                    }else{
+                     		
+                     		var size = 0;
+	                       $(data.categories).each(function( category ) {
+
+	                       	var option = new Element('option',{
+	                       		'value':category.category_id,
+	                       		//'text':category.name
+	                       		}).update(category.name);
+	                       		select.insert(option);
+	                       		size++;
+
+	                    	});
+	                       	select.writeAttribute('size',size); 
+
+	                  		$('select-cat-group').insert(select);
+
+	                  		if(_categories.length > _populateEditCombo){
+
+	                  				document.fire('populate:EditCombo');
+	                  				
+	                  		}
+	                  				                      
+                      	}
+                  },
+                  onFailure: function() { console.log('<font color="red">Something went wrong...</font>'); }
+
+
+                });
+
+});
+
+document.observe("populate:combo_ml", function(event) {
+
+	var hasNext = true;
+
+	var element = event.element();
+
+	var selected = $(element);
+ 
+ 	var catId = $(element)[$(element).selectedIndex].value;
+
+ 	var urlGetCategory = "<?php echo Mage::getUrl('*/*/getMlChildCategories');?>";
+
+ 	new Ajax.Request(urlGetCategory, {
+                  method:'post',
+                  parameters: {catId: catId},
+
+                  onSuccess: function(transport) {
+
+                  	var parent = parseInt(selected.readAttribute('data-parent'));
+
+                  	var papa = parent+1;
+
+                  	removeChildrenML(papa);
+
+                  	var select = new Element('select',{
+                  		'data-parent':papa,
+                  		//'size':'10',
+                  		'name':'category_ml[]',
+                  		'class':'select required-entry selectaddsML',
+                  	});
+
+                  	select.observe('change', callPopulateML);
+
+          
+                    var data = transport.responseText.evalJSON();
+                    
+                    if(data.error)
+                    
+                        console.log('<font color="red">'+data.msg+'</font>');
+                    
+                    else if(data.length == 0){
+
+                    	  hasNext = false;
+                    
+                    }else{
+                     		
+                     		var size = 0;
+	                       $(data.categories).each(function( category ) {
+
+	                       	var option = new Element('option',{
+	                       		'value':category.category_id,
+	                       		//'text':category.name
+	                       		}).update(category.name);
+	                       		select.insert(option);
+	                       		size++;
+
+	                    	});
+	                       	select.writeAttribute('size',size); 
+
+	                  		$('select-cat-group-ml').insert(select);
+
+	                  		if(_categories.length > _populateEditCombo){
+
+	                  				document.fire('populate:EditComboML');
+	                  				
+	                  		}
+	                  				                      
+                      	}
+                  },
+                  onFailure: function() { console.log('<font color="red">Something went wrong...</font>'); }
+
+
+                });
+
+});
+
+function removeChildren(parent){
+
+	parent = parseInt(parent);
+
+	$$('.selectadds').each(function(element) {
+
+		if(element.readAttribute('data-parent') >= parent)
+				element.remove();
+		
+	});
+
+
+}
+function removeChildrenML(parent){
+
+	parent = parseInt(parent);
+
+	$$('.selectaddsML').each(function(element) {
+
+		if(element.readAttribute('data-parent') >= parent)
+				element.remove();
+		
+	});
+
+
+
+}
+//-->
+</script>

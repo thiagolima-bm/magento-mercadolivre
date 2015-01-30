@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout version="0.1.0">    
+    <mercadolivre_adminhtml_mercadolivre_products>
+        <reference name="head">
+            <action method="setTitle" translate="title">
+                <title>Mercado Livre Manage Products</title>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="mercadolivre/adminhtml_product" name="product.grid" template="mercadolivre/export/product.phtml">
+                <block type="adminhtml/store_switcher" name="store_switcher" as="store_switcher">
+                    <action method="setUseConfirm">
+                        <params>0</params>
+                    </action>
+                </block>
+            </block>
+        </reference>
+    </mercadolivre_adminhtml_mercadolivre_products>
+
+    <mercadolivre_adminhtml_mercadolivre_grid>
+        <reference name="head">
+            <action method="setTitle" translate="title">
+                <title>Mercado Livre Manage Products</title>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="mercadolivre/adminhtml_product" name="product.grid" template="mercadolivre/export/product.phtml">
+                <block type="adminhtml/store_switcher" name="store_switcher" as="store_switcher">
+                    <action method="setUseConfirm">
+                        <params>0</params>
+                    </action>
+                </block>
+            </block>
+        </reference>
+    </mercadolivre_adminhtml_mercadolivre_grid>
+
+     <mercadolivre_adminhtml_mercadolivre_status>
+        
+        <reference name="content">
+            <block type="mercadolivre/adminhtml_status" name="mercadolivre.status" template="mercadolivre/status.phtml" />
+        </reference>
+    </mercadolivre_adminhtml_mercadolivre_status>
+
+    <mercadolivre_adminhtml_orders_index>
+        
+       <reference name="head">
+            <action method="setTitle" translate="title">
+                <title>Mercado Livre Manage Orders</title>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="mercadolivre/adminhtml_order" name="order.grid" template="mercadolivre/order/order.phtml">
+                <block type="adminhtml/store_switcher" name="store_switcher" as="store_switcher">
+                    <action method="setUseConfirm">
+                        <params>0</params>
+                    </action>
+                </block>
+            </block>
+        </reference>
+    </mercadolivre_adminhtml_orders_index>
+
+
+    <mercadolivre_adminhtml_orders_view>
+        
+       <reference name="head">
+            <action method="setTitle" translate="title">
+                <title>MercadoLivre View Order</title>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="mercadolivre/adminhtml_order_view" name="order.grid" template="mercadolivre/order/view.phtml">
+                <block type="adminhtml/store_switcher" name="store_switcher" as="store_switcher">
+                    <action method="setUseConfirm">
+                        <params>0</params>
+                    </action>
+                </block>
+            </block>
+        </reference>
+    </mercadolivre_adminhtml_orders_view>
+
+
+    <mercadolivre_adminhtml_category_index>
+        
+       <reference name="head">
+            <action method="setTitle" translate="title">
+                <title>Mercado Livre Manage Category</title>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="mercadolivre/adminhtml_category" name="category.grid" template="mercadolivre/category/categories.phtml">
+                <block type="adminhtml/store_switcher" name="store_switcher" as="store_switcher">
+                    <action method="setUseConfirm">
+                        <params>0</params>
+                    </action>
+                </block>
+            </block>
+        </reference>
+    </mercadolivre_adminhtml_category_index>
+
+
+    <mercadolivre_adminhtml_category_categories>
+        
+       <reference name="head">
+            <action method="setTitle" translate="title">
+                <title>Mercado Livre Manage Category</title>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="mercadolivre/adminhtml_category" name="category.grid" template="mercadolivre/category/add.phtml">
+                <block type="adminhtml/store_switcher" name="store_switcher" as="store_switcher">
+                    <action method="setUseConfirm">
+                        <params>0</params>
+                    </action>
+                </block>
+            </block>
+        </reference>
+    </mercadolivre_adminhtml_category_categories>
+
+
+
+    <mercadolivre_adminhtml_question_index>
+        
+       <reference name="head">
+            <action method="setTitle" translate="title">
+                <title>Mercado Livre Manage Question</title>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="mercadolivre/adminhtml_question" name="question.grid" template="mercadolivre/question/question.phtml">
+                <block type="adminhtml/store_switcher" name="store_switcher" as="store_switcher">
+                    <action method="setUseConfirm">
+                        <params>0</params>
+                    </action>
+                </block>
+            </block>
+        </reference>
+    </mercadolivre_adminhtml_question_index>
+
+
+    <mercadolivre_adminhtml_question_view>
+        
+       <reference name="head">
+            <action method="setTitle" translate="title">
+                <title>MercadoLivre View Question</title>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="mercadolivre/adminhtml_question_view" name="question.grid" template="mercadolivre/question/view.phtml">
+                <block type="adminhtml/store_switcher" name="store_switcher" as="store_switcher">
+                    <action method="setUseConfirm">
+                        <params>0</params>
+                    </action>
+                </block>
+            </block>
+        </reference>
+    </mercadolivre_adminhtml_question_view>
+
+</layout>

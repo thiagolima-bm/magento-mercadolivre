@@ -1,0 +1,167 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Acaldeira_Mercadolivre>
+			<version>0.5.0</version>
+		</Acaldeira_Mercadolivre>
+	</modules>
+	
+	<global>
+		<models>
+
+            <mercadolivre>
+                <class>Acaldeira_Mercadolivre_Model</class>
+                <resourceModel>mercadolivre_mysql4</resourceModel>
+            </mercadolivre>
+            <mercadolivre_mysql4>
+                <class>Acaldeira_Mercadolivre_Model_Mysql4</class>
+                <entities>
+                    <product>
+                        <table>ml_product</table>
+                    </product>
+                    <category>
+                        <table>ml_category</table>
+                    </category>
+                    <notification>
+                        <table>ml_notification</table>
+                    </notification>
+                    <order>
+                        <table>ml_order</table>
+                    </order>
+                    <question>
+                        <table>ml_question</table>
+                    </question>
+                </entities>
+            </mercadolivre_mysql4>
+
+
+        </models>
+		<events>
+            <mercadolivre_order_notification>
+                <observers>
+                    <Acaldeira_Mercadolivre>
+                        <class>Acaldeira_Mercadolivre_Model_Observer</class>
+                        <method>captureOrder</method>
+                        <type>singleton</type>
+                    </Acaldeira_Mercadolivre>
+                </observers>
+            </mercadolivre_order_notification>
+            <mercadolivre_questions_notification>
+                <observers>
+                    <Acaldeira_Mercadolivre>
+                        <class>Acaldeira_Mercadolivre_Model_Observer</class>
+                        <method>captureQuestion</method>
+                        <type>singleton</type>
+                    </Acaldeira_Mercadolivre>
+                </observers>
+            </mercadolivre_questions_notification>
+        </events>
+
+		<resources>
+            <mercadolivre_setup>
+                <setup>
+                    <module>Acaldeira_Mercadolivre</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </mercadolivre_setup>
+            <mercadolivre_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </mercadolivre_write>
+            <mercadolivre_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </mercadolivre_read>
+        </resources>
+
+        <blocks>
+            <mercadolivre>
+                <class>Acaldeira_Mercadolivre_Block</class>
+            </mercadolivre>
+            
+        </blocks>
+
+		<helpers>
+            <mercadolivre>
+                <class>Acaldeira_Mercadolivre_Helper</class>
+            </mercadolivre>
+        </helpers>
+	</global>
+
+	<!-- <crontab>
+        <jobs>
+            <sales_verify_shipping>
+                <schedule><cron_expr>00 03 * * *</cron_expr></schedule>
+                <run><model>bommercatto_sales/observer::changeStatusShipped</model></run>
+            </sales_verify_shipping>
+        </jobs>
+    </crontab> -->
+    <!-- <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <mercadolivre>
+                        <mercadolivre before="Mage_Adminhtml">Acaldeira_Mercadolivre_Adminhtml</mercadolivre>
+                    </mercadolivre>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+ -->
+    <admin>
+        <routers>
+            <mercadolivre>
+                <use>admin</use>
+                <args>
+                    <module>Acaldeira_Mercadolivre</module>
+                    <frontName>mercadolivre</frontName>
+                </args>
+            </mercadolivre>
+        </routers>
+    </admin>
+    <adminhtml>
+        <translate>
+            <modules>
+                <Acaldeira_Mercadolivre>
+                    <files>
+                        <default>Mercadolivre.csv</default>
+                    </files>
+                </Acaldeira_Mercadolivre>
+            </modules>
+        </translate>
+        <layout>
+            <updates>
+                <mercadolivre>
+                    <file>mercadolivre.xml</file>
+                </mercadolivre>
+            </updates>
+        </layout>
+        
+        <acl>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <mercadolivre>
+                                            <title>Mercado Livre</title>
+                                        </mercadolivre>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+</config>

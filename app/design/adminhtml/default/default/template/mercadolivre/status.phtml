@@ -1,0 +1,21 @@
+
+
+<?php if(!$this->isLogged()): ?>
+
+Clique <a href="<?php echo $this->getLoginUrl();?>"> aqui para se autenticar </a>
+
+<?php else: ?>
+
+Logado.
+<?php 
+$meli = $this->getMeli();
+
+// $session = Mage::getSingleton('admin/session')->getMLSession();
+var_dump($meli);
+
+var_dump($this->getSession());
+
+?>
+
+<?php endif;?>
+

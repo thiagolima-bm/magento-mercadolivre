@@ -1,0 +1,8 @@
+<config>
+  <modules>
+    <Acaldeira_Mercadolivre>
+      <active>true</active>
+      <codePool>local</codePool>
+    </Acaldeira_Mercadolivre>
+  </modules>
+</config>

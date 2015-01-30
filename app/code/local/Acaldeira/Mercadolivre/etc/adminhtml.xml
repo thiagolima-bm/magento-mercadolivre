@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<config>
+	<menu>
+            <mercadolivre module="mercadolivre">
+                <title>Mercadolivre</title>
+                <sort_order>711</sort_order>
+                <children>
+
+                    <dashboard translate="title" module="mercadolivre">
+                        <title>Status</title>
+                        <sort_order>1</sort_order>
+                        <action>mercadolivre/adminhtml_mercadolivre/status</action>
+                    </dashboard>
+
+                    <products translate="title" module="mercadolivre">
+                        <title>Products</title>
+                        <sort_order>2</sort_order>
+                        <action>mercadolivre/adminhtml_mercadolivre/products</action>
+                    </products>
+
+                    <category translate="title" module="mercadolivre">
+                        <title>Category</title>
+                        <sort_order>3</sort_order>
+                        <action>mercadolivre/adminhtml_category</action>
+                    </category>
+
+                    <orders translate="title" module="mercadolivre">
+                        <title>Orders</title>
+                        <sort_order>4</sort_order>
+                        <action>mercadolivre/adminhtml_orders</action>
+                    </orders>
+
+                    <questions translate="title" module="mercadolivre">
+                        <title>Questions</title>
+                        <sort_order>5</sort_order>
+                        <action>mercadolivre/adminhtml_question</action>
+                    </questions>
+
+                </children>
+            </mercadolivre>
+        </menu>
+   
+</config>
