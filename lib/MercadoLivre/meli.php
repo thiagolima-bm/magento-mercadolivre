@@ -2,9 +2,9 @@
 
 class Meli {
 
-	/**
-	 * @version 1.0.0
-	 */
+    /**
+     * @version 1.0.0
+     */
     const VERSION  = "1.0.0";
 
     /**
@@ -20,7 +20,7 @@ class Meli {
      */
     public static $CURL_OPTS = array(
         CURLOPT_USERAGENT => "MELI-PHP-SDK-1.0.0", 
-        CURLOPT_SSL_VERIFYPEER => false,
+        CURLOPT_SSL_VERIFYPEER => true,
         CURLOPT_CONNECTTIMEOUT => 10, 
         CURLOPT_RETURNTRANSFER => 1, 
         CURLOPT_TIMEOUT => 60
@@ -165,7 +165,7 @@ class Meli {
      * @return mixed
      */
     public function post($path, $body = null, $params = array()) {
-        $body = json_encode($body,JSON_UNESCAPED_SLASHES);
+        $body = json_encode($body);
         $opts = array(
             CURLOPT_HTTPHEADER => array('Content-Type: application/json'),
             CURLOPT_POST => true, 
@@ -186,9 +186,9 @@ class Meli {
      * @return mixed
      */
     public function put($path, $body = null, $params) {
-        $body = json_encode($body,JSON_UNESCAPED_SLASHES);
+        $body = json_encode($body);
         $opts = array(
-            CURLOPT_HTTPHEADER => array('Content-Type: application/json','Accept: application/json'),
+            CURLOPT_HTTPHEADER => array('Content-Type: application/json'),
             CURLOPT_CUSTOMREQUEST => "PUT",
             CURLOPT_POSTFIELDS => $body
         );
