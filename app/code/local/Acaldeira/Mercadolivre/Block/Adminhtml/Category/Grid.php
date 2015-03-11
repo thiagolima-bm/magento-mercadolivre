@@ -20,8 +20,8 @@ class Acaldeira_Mercadolivre_Block_Adminhtml_Category_Grid extends Mage_Adminhtm
             'category_id = category.entity_id', 
             array('category.value'));
 
-        $collection->addFieldToFilter('category.attribute_id','41');
-        $collection->addFieldToFilter('category.store_id',Mage::app()->getStore());
+        $collection->addFieldToFilter('category.attribute_id','41'); // hummm ;[]
+        $collection->addFieldToFilter('category.store_id',Mage::app()->getStore()->getId());
 
                        
 		
