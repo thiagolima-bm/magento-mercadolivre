@@ -74,7 +74,7 @@ class Acaldeira_Mercadolivre_Block_Adminhtml_Category extends Mage_Adminhtml_Blo
 
     public function getMLSiteCategories()
     {
-        return Acaldeira_Mercadolivre_Helper_CategoryData::getSiteCategories();
+        return (object) Acaldeira_Mercadolivre_Helper_CategoryData::getSiteCategories();
     }
 
 }
