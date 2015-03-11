@@ -111,7 +111,7 @@
 			<?php echo Mage::helper('mercadolivre')->__("Date");?>: <?php echo $content->shipping->date_created;?> <br>
             <strong>Endereço</strong>
             <address>
-				<?php echo $content->shipping->receiver_address->address_line;?>, <?php echo $content->shipping->receiver_address->street_number;?>  <?php echo $content->shipping->receiver_address->comment;?><br>
+				<?php echo $content->shipping->receiver_address->street_name;?>, <?php echo $content->shipping->receiver_address->street_number;?>  <?php echo $content->shipping->receiver_address->comment;?><br>
 				<?php echo $content->shipping->receiver_address->city->name;?> <br>
 				<?php echo $content->shipping->receiver_address->state->name;?> <br>
 				<?php echo $content->shipping->receiver_address->zip_code;?> <br>	 
@@ -127,12 +127,15 @@
             <div class="entry-edit-head">
                 <h4 class="icon-head head-payment-method">Informações de Pagamento</h4>
             </div>
-            <fieldset> 
-	            ID: <?php echo $content->payments->id;?> <br>
-	            Total: <?php echo $content->payments->transaction_amount;?> <br>
-	            Status: <?php echo $content->payments->status;?> <br>
-	            Data: <?php echo $content->payments->date_created;?> <br>
-                <div>Pedido foi feito usando <?php echo $content->payments->currency_id;?></div>
+            <fieldset>
+                <?php foreach ($content->payments as $payment): ?>
+                    ID: <?php echo $payment->id;?> <br>
+                    Total: <?php echo $payment->transaction_amount;?> <br>
+                    Status: <?php echo $payment->status;?> <br>
+                    Data: <?php echo $payment->date_created;?> <br>
+                    Metodo de Pagamento: <?php echo $payment->payment_method_id;?> <br>
+                    <div>Pedido foi feito usando <?php echo $payment->currency_id;?></div>
+                <?php endforeach;?>
             </fieldset>
         </div>
     </div>
