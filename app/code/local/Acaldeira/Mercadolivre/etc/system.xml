@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * MM Ajax 
+ * 
+ * @category     MM
+ * @package      Acaldeira_Ajax 
+ * @copyright    Copyright (c) 2015 MM (http://blog.meumagento.com.br/)
+ * @author       MM (Thiago Caldeira de Lima)  
+ * @version      Release: 0.1.0
+ */
+-->
 <config>
     <tabs>
         <mercadolivre translate="label" module="mercadolivre">

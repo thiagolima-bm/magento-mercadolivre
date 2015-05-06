@@ -1,4 +1,14 @@
 <?php
+/**
+ * Acaldeira Mercadolivre 
+ * 
+ * @category     Acaldeira
+ * @package      Acaldeira_Mercadolivre 
+ * @copyright    Copyright (c) 2015 MM (http://blog.meumagento.com.br/)
+ * @author       MM (Thiago Caldeira de Lima)  
+ * @version      Release: 0.1.0 
+ */
+
 class Acaldeira_Mercadolivre_IndexController extends Mage_Core_Controller_Front_Action
 {
 	public function indexAction()

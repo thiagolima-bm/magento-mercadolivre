@@ -1,21 +1,21 @@
-
-
+<?php
+/**
+ * Acaldeira Mercadolivre 
+ * 
+ * @category     Acaldeira
+ * @package      Acaldeira_Mercadolivre 
+ * @copyright    Copyright (c) 2015 MM (http://blog.meumagento.com.br/)
+ * @author       MM (Thiago Caldeira de Lima)  
+ * @version      Release: 0.1.0 
+ */
+?>
 <?php if(!$this->isLogged()): ?>
 
-Clique <a href="<?php echo $this->getLoginUrl();?>"> aqui para se autenticar </a>
+    <a href="<?php echo $this->getLoginUrl();?>"><?php echo __('Login')?></a>
 
-<?php else: ?>
+<?php else: ?> 
 
-Logado.
-<?php 
-$meli = $this->getMeli();
-
-// $session = Mage::getSingleton('admin/session')->getMLSession();
-var_dump($meli);
-
-var_dump($this->getSession());
-
-?>
+    Logado.
 
 <?php endif;?>
 
