@@ -29,7 +29,7 @@
 		    </div>
 			<select id="catSelectorMl" data-parent="0" size="10" class="select required-entry selectaddsML" name="category_ml[]">
 				
-				<?php foreach($this->getMLSiteCategories()['body'] as $category):?>
+				<?php foreach($this->getMLSiteCategories()->body as $category):?>
 				<option value=<?php echo $category->id;?>>
 					<?php echo $category->name;?>
 				</option>

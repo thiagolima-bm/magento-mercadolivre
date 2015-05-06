@@ -1,10 +1,6 @@
-
 <?php 
-
     $order = $this->getOrder();
-
     $content = $order['body'];
-
 ?>
 
 
@@ -26,22 +22,22 @@
                     </div>
                     <div class="fieldset">
                         <table cellspacing="0" class="form-list">
-            	            <tbody>
-            		            <tr>
-            		                <td class="label"><label>Data do Pedido</label></td>
-            		                <td class="value"><strong><?php echo $content->date_created;?> </strong></td>
-            		            </tr>
-            		            <tr>
-            		                <td class="label"><label>Status do Pedido</label></td>
-            		                <td class="value"><strong><span id="order_status"><?php echo $content->status;?></span></strong></td>
-            		            </tr>
+                            <tbody>
+                                <tr>
+                                    <td class="label"><label>Data do Pedido</label></td>
+                                    <td class="value"><strong><?php echo $content->date_created;?> </strong></td>
+                                </tr>
+                                <tr>
+                                    <td class="label"><label>Status do Pedido</label></td>
+                                    <td class="value"><strong><span id="order_status"><?php echo $content->status;?></span></strong></td>
+                                </tr>
 
                                 <tr>
                                     <td class="label"><label>Tags</label></td>
                                     <td class="value"><strong><span id="order_status"><?php echo implode(",", $content->tags);?></span></strong></td>
                                 </tr>
-            		         </tbody>
-            	         </table>
+                             </tbody>
+                         </table>
                     </div>
                 </div>
             </div>
@@ -55,22 +51,22 @@
                     <div class="fieldset">
                         <div class="hor-scroll">
                             <table cellspacing="0" class="form-list">
-            	                <tbody>
-            		                <tr>
-            		                    <td class="label"><label>MLID</label></td>
-            		                    <td class="value"><strong><?php echo $content->buyer->nickname;?></strong></td>
-            		                </tr>
-            		                <tr>
-            		                    <td class="label"><label>Nome do Cliente</label></td>
-            		                    <td class="value">
-            		                           <strong><?php echo $content->buyer->first_name;?> <?php echo $content->buyer->last_name;?></strong>
-            		                    </td>
-            		                </tr>
-            		                <tr>
-            		                    <td class="label"><label>Email</label></td>
-            		                    <td class="value"><a href="mailto:<?php echo $content->buyer->email;?>"><strong><?php echo $content->buyer->email;?></strong></a></td>
-            		                </tr>
-            	                 </tbody>
+                                <tbody>
+                                    <tr>
+                                        <td class="label"><label>MLID</label></td>
+                                        <td class="value"><strong><?php echo $content->buyer->nickname;?></strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="label"><label>Nome do Cliente</label></td>
+                                        <td class="value">
+                                               <strong><?php echo $content->buyer->first_name;?> <?php echo $content->buyer->last_name;?></strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="label"><label>Email</label></td>
+                                        <td class="value"><a href="mailto:<?php echo $content->buyer->email;?>"><strong><?php echo $content->buyer->email;?></strong></a></td>
+                                    </tr>
+                                 </tbody>
                              </table>
                         </div>
                     </div>
@@ -87,12 +83,12 @@
         </div>
         <fieldset>
             <address>
-            	<?php echo Mage::helper('mercadolivre')->__("ID");?>: <?php echo $content->seller->id;?> <br>
-			<?php echo Mage::helper('mercadolivre')->__("Nickname");?>: <?php echo $content->seller->nickname;?> <br>
-			<?php echo Mage::helper('mercadolivre')->__("Email");?>: <?php echo $content->seller->email;?> <br>
-			<?php echo Mage::helper('mercadolivre')->__("Phone");?>: 
-			(<?php echo $content->seller->phone->area_code;?>) <?php echo $content->seller->phone->number;?>  ext: <?php echo $content->seller->phone->extension;?>  <br>
-			<?php echo Mage::helper('mercadolivre')->__("Name");?>: <?php echo $content->seller->first_name;?> <?php echo $content->seller->last_name;?> <br>
+                <?php echo Mage::helper('mercadolivre')->__("ID");?>: <?php echo $content->seller->id;?> <br>
+            <?php echo Mage::helper('mercadolivre')->__("Nickname");?>: <?php echo $content->seller->nickname;?> <br>
+            <?php echo Mage::helper('mercadolivre')->__("Email");?>: <?php echo $content->seller->email;?> <br>
+            <?php echo Mage::helper('mercadolivre')->__("Phone");?>: 
+            (<?php echo $content->seller->phone->area_code;?>) <?php echo $content->seller->phone->number;?>  ext: <?php echo $content->seller->phone->extension;?>  <br>
+            <?php echo Mage::helper('mercadolivre')->__("Name");?>: <?php echo $content->seller->first_name;?> <?php echo $content->seller->last_name;?> <br>
             </address>
         </fieldset>
     </div>
@@ -105,16 +101,16 @@
             <div class="tools"></div>
         </div>
         <fieldset>
-        	<?php echo Mage::helper('mercadolivre')->__("ID");?>: <?php echo $content->shipping->id;?> <br>
-			<?php echo Mage::helper('mercadolivre')->__("Type");?>: <?php echo $content->shipping->shipment_type;?> <br>
-			<?php echo Mage::helper('mercadolivre')->__("Status");?>: <?php echo $content->shipping->status;?> <br>
-			<?php echo Mage::helper('mercadolivre')->__("Date");?>: <?php echo $content->shipping->date_created;?> <br>
+            <?php echo Mage::helper('mercadolivre')->__("ID");?>: <?php echo $content->shipping->id;?> <br>
+            <?php echo Mage::helper('mercadolivre')->__("Type");?>: <?php echo $content->shipping->shipment_type;?> <br>
+            <?php echo Mage::helper('mercadolivre')->__("Status");?>: <?php echo $content->shipping->status;?> <br>
+            <?php echo Mage::helper('mercadolivre')->__("Date");?>: <?php echo $content->shipping->date_created;?> <br>
             <strong>Endereço</strong>
             <address>
-				<?php echo $content->shipping->receiver_address->address_line;?>, <?php echo $content->shipping->receiver_address->street_number;?>  <?php echo $content->shipping->receiver_address->comment;?><br>
-				<?php echo $content->shipping->receiver_address->city->name;?> <br>
-				<?php echo $content->shipping->receiver_address->state->name;?> <br>
-				<?php echo $content->shipping->receiver_address->zip_code;?> <br>	 
+                <?php echo $content->shipping->receiver_address->street_name;?>, <?php echo $content->shipping->receiver_address->street_number;?>  <?php echo $content->shipping->receiver_address->comment;?><br>
+                <?php echo $content->shipping->receiver_address->city->name;?> <br>
+                <?php echo $content->shipping->receiver_address->state->name;?> <br>
+                <?php echo $content->shipping->receiver_address->zip_code;?> <br>    
             </address>
         </fieldset>
     </div>
@@ -127,12 +123,15 @@
             <div class="entry-edit-head">
                 <h4 class="icon-head head-payment-method">Informações de Pagamento</h4>
             </div>
-            <fieldset> 
-	            ID: <?php echo $content->payments->id;?> <br>
-	            Total: <?php echo $content->payments->transaction_amount;?> <br>
-	            Status: <?php echo $content->payments->status;?> <br>
-	            Data: <?php echo $content->payments->date_created;?> <br>
-                <div>Pedido foi feito usando <?php echo $content->payments->currency_id;?></div>
+            <fieldset>
+                <?php foreach ($content->payments as $payment): ?>
+                    ID: <?php echo $payment->id;?> <br>
+                    Total: <?php echo $payment->transaction_amount;?> <br>
+                    Status: <?php echo $payment->status;?> <br>
+                    Data: <?php echo $payment->date_created;?> <br>
+                    Metodo de Pagamento: <?php echo $payment->payment_method_id;?> <br>
+                    <div>Pedido foi feito usando <?php echo $payment->currency_id;?></div>
+                <?php endforeach;?>
             </fieldset>
         </div>
     </div>
@@ -145,8 +144,8 @@
             <fieldset>
 
                 <strong><?php echo $content->shipping->shipment_type;?></strong>                                                                        
-		        <span class="price">R$ <?php echo $content->shipping->cost;?></span>                                                
-	        </fieldset>
+                <span class="price">R$ <?php echo $content->shipping->cost;?></span>                                                
+            </fieldset>
         </div>
     </div>
         <div class="clear"></div>
@@ -170,47 +169,44 @@
         <tbody class="even">
             
         <?php 
-	        foreach ($content->order_items as $item): 
-
-	        	$_subtotal = $item->unit_price*$item->quantity;
-    	?>
+            foreach ($content->order_items as $item): 
+                $_subtotal = $item->unit_price*$item->quantity;
+        ?>
             <tr class="border">
-			    <td>
-	                <div id="order_item_2186" class="item-container">
-		                <div class="item-text">
-						    <h5 class="title">
-							    <span id="order_item_2186_title">
-								    <?php echo $item->item->title;?>
-							    </span>
-						    </h5>
-						    <div>
-							    <strong>MLID:</strong> <?php echo $item->item->id?>
-						    </div>
-		                </div>
-			        </div>
-	            </td>
-   
-			    <td class="a-right"><span class="price"><?php echo $item->currency_id;?> <?php echo $item->unit_price;?></span></td>
-			    <td class="a-right">
-                    <span class="qty">
-	                    <span class="qty"><?php echo $item->quantity;?></span>                
-                    </span>
-		            <br>
-			    </td>
-			    <td class="a-right">
-                    <span class="price-excl-tax">
-	                    <span class="price"><?php echo $item->currency_id;?> <?php echo $_subtotal?></span>                
-                    </span>
-		            <br>
+                <td>
+                    <div id="order_item_2186" class="item-container">
+                        <div class="item-text">
+                            <h5 class="title">
+                                <span id="order_item_2186_title">
+                                    <?php echo $item->item->title;?>
+                                </span>
+                            </h5>
+                            <div>
+                                <strong>MLID:</strong> <?php echo $item->item->id?>
+                            </div>
+                        </div>
+                    </div>
                 </td>
-		
-			</tr>
-	       <?php
-
-				$subtotal+=$_subtotal;
-
-				endforeach;
-	       ?>         
+   
+                <td class="a-right"><span class="price"><?php echo $item->currency_id;?> <?php echo $item->unit_price;?></span></td>
+                <td class="a-right">
+                    <span class="qty">
+                        <span class="qty"><?php echo $item->quantity;?></span>                
+                    </span>
+                    <br>
+                </td>
+                <td class="a-right">
+                    <span class="price-excl-tax">
+                        <span class="price"><?php echo $item->currency_id;?> <?php echo $_subtotal?></span>                
+                    </span>
+                    <br>
+                </td>
+        
+            </tr>
+           <?php
+                $subtotal+=$_subtotal;
+                endforeach;
+           ?>         
         </tbody>
     </table>
   </div>
@@ -224,37 +220,37 @@
     <div class="box-right entry-edit">
         <div class="entry-edit-head"><h4>Totais do Pedido</h4></div>
         <div class="order-totals">
-	        <table cellspacing="0" width="100%">
-			    <tfoot>
-	                <tr class="0">
-			            <td class="label">
-			                <strong>Total Geral</strong>
-			            </td>
-			            <td class="emph">
-			                <strong><span class="price"><?php echo $content->currency_id;?> <?php echo $content->total_amount;?></span></strong>
-			            </td>
-			        </tr>   
+            <table cellspacing="0" width="100%">
+                <tfoot>
+                    <tr class="0">
+                        <td class="label">
+                            <strong>Total Geral</strong>
+                        </td>
+                        <td class="emph">
+                            <strong><span class="price"><?php echo $content->currency_id;?> <?php echo $content->total_amount;?></span></strong>
+                        </td>
+                    </tr>   
                 </tfoot>
-	            <tbody>
-	                <tr class="0">
-			            <td class="label">
-		                    Subtotal                            
-	                    </td>
-	                    <td>
-			                <span class="price"><?php echo $content->currency_id;?> <?php echo $subtotal;?></span>                        
-		                </td>
-			        </tr>
-	                <tr class="1">
-			            <td class="label">
-		                    Frete &amp; Manuseio                            
-	                    </td>
-	                    <td>
-			                <span class="price"><?php echo $content->currency_id;?> <?php echo $content->shipping->cost;?></span>                        
-		                </td>
-			        </tr>
-	            </tbody>
-		    </table>
-		</div>
+                <tbody>
+                    <tr class="0">
+                        <td class="label">
+                            Subtotal                            
+                        </td>
+                        <td>
+                            <span class="price"><?php echo $content->currency_id;?> <?php echo $subtotal;?></span>                        
+                        </td>
+                    </tr>
+                    <tr class="1">
+                        <td class="label">
+                            Frete &amp; Manuseio                            
+                        </td>
+                        <td>
+                            <span class="price"><?php echo $content->currency_id;?> <?php echo $content->shipping->cost;?></span>                        
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
    
 </div>
