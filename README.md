@@ -14,9 +14,19 @@ Authentication and Security
 Redirect URI: http://sualoja.com.br/mercadolivre
 
 
-3º passo: Magento > Configuração
+3º passo: Magento > Configuração > Mercado Livre
 
 Adicionar as informações pertinentes ;-)
 
-Consultoria só paga R$200,00/h ;-)
+4º passo: Mapear as categorias
+
+Associar as categorias do magento com as categorias do mercado livre.
+
+5º passo: Vender ;-)
+
+Veja dicas de magento e desenvolvimento de módulos em: http://blog.meumagento.com.br
+
+Caso deseje algum tipo de consultoria em Magento ou TI em geral:
+
+thiagolimaufrj@gmail.com
 
