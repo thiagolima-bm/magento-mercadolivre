@@ -12,6 +12,7 @@ Short name: sualoja.com.br
 Description: Integração (Nome de sua loja)
 Authentication and Security
 Redirect URI: http://sualoja.com.br/mercadolivre
+Notifications Callback URL: http://sualoja.com.br/mercadolivre
 
 
 3º passo: Magento > Configuração > Mercado Livre
