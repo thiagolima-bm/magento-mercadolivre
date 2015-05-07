@@ -3,8 +3,8 @@
 /**
  * MM Ajax 
  * 
- * @category     MM
- * @package      Acaldeira_Ajax 
+ * @category     Acaldeira
+ * @package      Acaldeira_Mercadolivre 
  * @copyright    Copyright (c) 2015 MM (http://blog.meumagento.com.br/)
  * @author       MM (Thiago Caldeira de Lima)  
  * @version      Release: 0.1.0
@@ -16,10 +16,19 @@
 			<version>0.5.0</version>
 		</Acaldeira_Mercadolivre>
 	</modules>
-	
+    <frontend>
+        <routers>
+            <ajax>
+                <use>standard</use>
+                <args>
+                    <module>Acaldeira_Mercadolivre</module>
+                    <frontName>mercadolivre</frontName>
+                </args>
+            </ajax>
+        </routers>
+    </frontend>
 	<global>
 		<models>
-
             <mercadolivre>
                 <class>Acaldeira_Mercadolivre_Model</class>
                 <resourceModel>mercadolivre_mysql4</resourceModel>
@@ -44,8 +53,6 @@
                     </question>
                 </entities>
             </mercadolivre_mysql4>
-
-
         </models>
 		<events>
             <mercadolivre_order_notification>
@@ -67,7 +74,6 @@
                 </observers>
             </mercadolivre_questions_notification>
         </events>
-
 		<resources>
             <mercadolivre_setup>
                 <setup>
@@ -88,41 +94,17 @@
                 </connection>
             </mercadolivre_read>
         </resources>
-
         <blocks>
             <mercadolivre>
                 <class>Acaldeira_Mercadolivre_Block</class>
             </mercadolivre>
-            
         </blocks>
-
 		<helpers>
             <mercadolivre>
                 <class>Acaldeira_Mercadolivre_Helper</class>
             </mercadolivre>
         </helpers>
 	</global>
-
-	<!-- <crontab>
-        <jobs>
-            <sales_verify_shipping>
-                <schedule><cron_expr>00 03 * * *</cron_expr></schedule>
-                <run><model>bommercatto_sales/observer::changeStatusShipped</model></run>
-            </sales_verify_shipping>
-        </jobs>
-    </crontab> -->
-    <!-- <admin>
-        <routers>
-            <adminhtml>
-                <args>
-                    <mercadolivre>
-                        <mercadolivre before="Mage_Adminhtml">Acaldeira_Mercadolivre_Adminhtml</mercadolivre>
-                    </mercadolivre>
-                </args>
-            </adminhtml>
-        </routers>
-    </admin>
- -->
     <admin>
         <routers>
             <mercadolivre>
@@ -151,7 +133,6 @@
                 </mercadolivre>
             </updates>
         </layout>
-        
         <acl>
             <all>
                 <title>Allow Everything</title>
